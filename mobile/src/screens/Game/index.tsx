@@ -5,9 +5,9 @@ import { Entypo } from '@expo/vector-icons';
 
 import { GameParams } from '../../@types/navigation';
 import { Background } from '../../components/Background';
+import { DuoMatch } from '../../components/DuoMatch';
 import { THEME } from '../../theme';
 import logoImg from '../../assets/logo-nlw-esports.png';
-
 import { styles } from './styles';
 import { Heading } from '../../components/Heading';
 import { DuoCard, DuoCarProps } from '../../components/DuoCard';
@@ -15,6 +15,7 @@ import { useEffect, useState } from 'react';
 
 export function Game() {
   const [duos, setDuos] = useState<DuoCarProps[]>([]);
+  const [discordDuoSelected, setDiscordDuoSelected] = useState('sdsda');
   const route = useRoute();
   const navigation = useNavigation();
   const game = route.params as GameParams;
@@ -74,6 +75,12 @@ export function Game() {
               Não há anúncios publicados ainda.
             </Text>
           )}
+        />
+
+        <DuoMatch
+          visible={discordDuoSelected.length > 0}
+          discord="Wesley"
+          onClose={() => setDiscordDuoSelected('')}
         />
       </SafeAreaView>
     </Background>
